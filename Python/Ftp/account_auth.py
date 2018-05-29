@@ -25,6 +25,7 @@ else:
 ftp = FTP()
 i = 0
 j = 0
+MAX = 0
 fail_dict = {}
 while 1:
     line = fd.readline()
@@ -33,18 +34,22 @@ while 1:
 
     line = line.strip('\n').split()
     if len(line) != 2:
-        print "wrong file format"
-        os._exit(-2)
+        print "wrong file format, break..."
+        break
 
     try:
-        ftp.connect(host="miguvideolog.cmvideo.cn", timeout=10)
+        ftp.connect(host="miguvideolog.cmvideo.cn", timeout=30)
         ftp.login(line[0], line[1])
         ftp.close()
         i += 1
     except Exception as e:
+        if len(line[0]) > MAX:
+            MAX = len(line[0])
+
         fail_dict[line[0]] = str(e)
         j += 1
 
 print "成功%d个," % i + "失败%d个" % j
 for each in fail_dict:
-    print "失败账号: %s,"%each+ " 失败原因: %s" % fail_dict[each]
+    print("失败账号: {:<%d}," % MAX).format(each) + \
+        (" 失败原因: {:<%d}" % MAX).format(fail_dict[each])
