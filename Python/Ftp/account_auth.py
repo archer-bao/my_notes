@@ -50,7 +50,7 @@ while 1:
 
     try:
         print "正在测试 %s" % line[0]
-        ftp.connect(host="192.168.1.49", timeout=30)
+        ftp.connect(host="miguvideolog.cnvideo.cn", timeout=30)
         ftp.login(line[0], line[1])
         ftp.close()
         i += 1
@@ -63,5 +63,9 @@ while 1:
 
 print "成功%d个," % i + "失败%d个" % j
 for each in fail_dict:
-    print("失败账号: {:<%d}," % MAX).format(each) + \
-        (" 失败原因: {:<%d}" % MAX).format(fail_dict[each])
+    print("失败账号: {0:<%d}," % MAX).format(each) + \
+        (" 失败原因: {0:<%d}" % MAX).format(fail_dict[each])
+
+# 如果在Python 2.6上无法使用上面的print代码，请使用下面的代码
+# for each in fail_dict:
+#     print"失败账号: %s," % each + " 失败原因: %s" % fail_dict[each]
