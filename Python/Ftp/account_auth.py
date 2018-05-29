@@ -4,6 +4,7 @@
 import os
 import sys
 import time
+import signal
 import datetime
 
 from ftplib import FTP
@@ -15,6 +16,16 @@ user1   passwd1
 user2   passwd2
 user3   passwd3
 """
+
+
+#======================================
+def sigHandle(sig, frame):
+    print('\nPython script terminated')
+    os._exit(0)
+
+signal.signal(signal.SIGINT, sigHandle)
+#======================================
+
 
 if os.path.exists('./ftp_account.txt'):
     fd = open('./ftp_account.txt', 'r')
@@ -38,6 +49,7 @@ while 1:
         break
 
     try:
+        print "正在测试 %s" % line[0]
         ftp.connect(host="miguvideolog.cmvideo.cn", timeout=30)
         ftp.login(line[0], line[1])
         ftp.close()
