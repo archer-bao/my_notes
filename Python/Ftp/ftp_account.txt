@@ -1,0 +1,5 @@
+ftpuser1	password1
+ftpuser2	password2
+ftpuser3	password3
+ftpuser4	password4
+ftpuser5	password5
