@@ -7,7 +7,7 @@ import struct
 import hashlib
 import time
 
-# gtoken长度是8的倍数，不足则以=补足
+# gtoken长度是8的倍数，不足则以=补全
 gtoken = "J4RKWWTNYCT6QB4NB4HNDAQ5BU======"
 key = base64.b32decode(gtoken, True)
 msg = struct.pack(">Q", int(time.time()) // 30)
