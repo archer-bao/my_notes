@@ -55,7 +55,7 @@ if __name__ == '__main__':
                     "https://music.163.com/playlist?id=6220214",
                     "https://music.163.com/playlist?id=23597339",
                     "https://music.163.com/playlist?id=8608439",
-                    "https://music.163.com/playlist?id=8155635",
-                    "https://music.163.com/playlist?id=30376751"]
+                    "https://music.163.com/playlist?id=8155635"]
+                    
         for each in playlist:
             get_songs(each)
